@@ -6,3 +6,9 @@ jobs:
     steps:
       - name: Print to console
         run: echo gt actions!
+      - name: print a few lines
+        run: |
+          echo first line
+          echo second line
+
+          
