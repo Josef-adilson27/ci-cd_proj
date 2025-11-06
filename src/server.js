@@ -8,9 +8,10 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 /// https://myawesomewebhook.loca.lt/webhooks/github
-app.use('/webhooks', webhookRoutes);
-//app.use('/notifications', notificationRoutes);
 
+app.use('/webhooks', webhookRoutes);
+
+//app.use('/notifications', notificationRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ 
