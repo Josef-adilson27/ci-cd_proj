@@ -65,17 +65,13 @@ class TelegramNotifier {
   }
 
   async sendPushNotification(repo, branch, commits, author) {
-
-    const commitList = commits.slice(0, 3).map((commit) => `• ${commit.message}`).join("\n");
-
+  
     const message = `
           🔨 <b>New Push</b>
           📦 <b>Repository:</b> ${repo}
           🌿 <b>Branch:</b> ${branch}
           👤 <b>By:</b> ${author}
           📝 <b>Commits (${commits.length}):</b>
-          ${commitList}
-          ${commits.length > 3 ? `\n... and ${commits.length - 3} more` : ""}
     `.trim();
 
     return this.sendMessage(message);
