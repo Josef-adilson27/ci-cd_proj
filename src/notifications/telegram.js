@@ -64,7 +64,7 @@ commits.length
     return this.sendMessage(message);
   }
 
-  async sendPushNotification(repo, branch, commits, author) {
+  async sendPushNotification(repo, branch, author) {
   
     const message = `
           🔨 <b>New Push</b>

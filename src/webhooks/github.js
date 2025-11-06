@@ -32,8 +32,8 @@ router.post('/github', async (req, res) => {
 });
 
 async function handlePushEvent(payload) {
-  const { repository, commits, sender } = payload;
-  telegram.sendPushNotification()
+  const { repository, commits, sender,branch } = payload;
+  telegram.sendPushNotification(repository.name,branch)
   await sendNotification(
     `🔨 New push to ${repository.name}\n` +
     `👤 By: ${sender.login}\n` +
