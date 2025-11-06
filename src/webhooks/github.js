@@ -32,8 +32,10 @@ router.post('/github', async (req, res) => {
 });
 
 async function handlePushEvent(payload) {
-  const { repository, commits, sender,branch } = payload;
-  telegram.sendPushNotification(repository.name,branch)
+  const { repository, commits, sender,branch,head_commit } = payload;
+
+  telegram.sendPushNotification(repository.name,branch,head_commit.author.username)
+  
   await sendNotification(
     `🔨 New push to ${repository.name}\n` +
     `👤 By: ${sender.login}\n` +
@@ -44,7 +46,7 @@ async function handlePushEvent(payload) {
 
 async function handleDeploymentEvent(payload) {
   const { deployment, deployment_status, repository } = payload;
-  telegram.sendDeploySuccess()
+  // telegram.sendDeploySuccess()
   const status = deployment_status.state;
   const emoji = status === 'success' ? '✅' : '❌';
   
