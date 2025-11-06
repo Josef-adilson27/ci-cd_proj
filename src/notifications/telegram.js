@@ -14,7 +14,7 @@ class TelegramNotifier {
       return;
     }
 
-
+commits.length
     try {
       const url = `https://api.telegram.org/bot${this.token}/sendMessage`;
 
@@ -71,7 +71,6 @@ class TelegramNotifier {
           📦 <b>Repository:</b> ${repo}
           🌿 <b>Branch:</b> ${branch}
           👤 <b>By:</b> ${author}
-          📝 <b>Commits (${commits.length}):</b>
     `.trim();
 
     return this.sendMessage(message);
